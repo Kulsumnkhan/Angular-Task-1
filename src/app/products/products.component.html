@@ -1,0 +1,58 @@
+<!-- <p>products works!</p> -->
+<div class="container">
+    <div class="row">
+
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-3" *ngFor="let list of getProductsList; let i = index">
+            <div class="card mt-4 text-center">
+                <div class="card-body">
+                    <img class="img-fluid" [src]="list.productImage" [alt]="list.productImage"
+                        [title]="list.productImage">
+                    <h3>{{list.productName}}</h3>
+                    <h5>Price : {{list.productPrice*quantityArray[i] | currency: 'INR'}}</h5>
+                    <hr>
+                    <div class="qtn">
+                        <h4 class="quantity">Quantity : </h4>
+                        <button class="btn btn-outline-secondary mb-2" (click)="decrement(i)">-</button>
+                        <input type="text" [value]="quantityArray[i]" class="counter">
+                        <button class="btn btn-outline-secondary mb-2" (click)="increment(i)">+</button>
+                    </div>
+                    <button class="btn btn-primary btn-block mt-2"
+                        (click)="addToTable(list, quantityArray[i], list.productPrice*quantityArray[i])">ADD TO
+                        BAG</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <table class="table table-bordered table-hover">
+        <thead class="table-success">
+            <tr>
+                <th>Sr. No.</th>
+                <th>Name</th>
+                <th>Image</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Order Total</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let items of tableArray let i = index" class="table-light">
+                <td>{{i + 1}}</td>
+                <td>{{items.productName}}</td>
+                <td><img src="{{items.productImage}}" alt="{{items.productImage}}" class="img-edit"></td>
+                <td>{{items.total}}</td>
+                <td>{{items.productPrice}}</td>
+                <td>{{items.gTotal}}</td>
+                <td class="text-center align-middle"><i class="fa fa-times icon" aria-hidden="true" (click)="onDelete(i)"></i></td>
+            </tr>
+            <tr class="no-border">
+                <td colspan="4"></td>
+                <td class="text-end">Grand Total</td>
+                <td class="text-end">{{totalAmount}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

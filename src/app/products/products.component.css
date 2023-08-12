@@ -1,0 +1,34 @@
+.counter {
+    border: none;
+    text-align: center;
+    width: 50px;
+}
+
+.card-body > h3 {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.quantity {
+    display: inline;
+}
+
+.btn{
+    font-size: 10px;
+}
+
+.img-edit {
+    width: 100px;
+}
+
+.no-border td {
+    border: none;
+}
+
+.qtn {
+    display: block;
+}
+
+.icon{
+    cursor: pointer;
+}

@@ -1,0 +1,59 @@
+<!-- <p>navbar works!</p> -->
+<nav class="navbar navbar-expand-sm bg-body-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="../../assets/images/MyAman Logo 6..jpeg" alt="MyAman" title="MyAman">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item active">
+            <button type="button" class="btn btn-outline-danger"  data-bs-toggle="modal" data-bs-target="#myProducts">
+                <i class="fa fa-cart-plus me-2 fa-xl" aria-hidden="true"></i>
+                Buy Now
+                <span class="visually-hidden">(current)</span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myProducts" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="myProductsLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="myProductsLabel">Add Product</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form #myForm="ngForm">
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="pName">Product Name -</label>
+                        <input type="text" name="productName" id="pName" class="form-control" ngModel #validPr="ngModel" placeholder="Enter the name of the product.">
+                        <span class="text-danger" *ngIf="!validPr.valid && validPr.touched">Product name is required.</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="pPrice">Product Price -</label>
+                        <input type="text" name="productPrice" id="pPrice" class="form-control" ngModel #validPrice="ngModel" placeholder="Enter the price of the product." required>
+                        <span class="text-danger" *ngIf="!validPrice.valid && validPrice.touched">Product price is required.</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="pImage">Product Image -</label>
+                        <input type="text" name="productImage" id="pImage" class="form-control" ngModel placeholder="Paste the image url.">
+                    </div>
+                    <div class="modal-footer">
+                      <button type="submit" class="btn btn-secondary" (click)="onSubmit()" data-bs-dismiss="modal">Add Products</button>
+                    </div>
+                </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
