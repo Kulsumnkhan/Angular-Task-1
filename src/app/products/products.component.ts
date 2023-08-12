@@ -12,6 +12,7 @@ export class ProductsComponent implements OnInit {
   // tableNameArray: any = [];
   // existingItems: any[] = [];
   getProductsList: any[] = [];
+  updateList : any[] = [];
   quantityArray: any[] = [];
   tableArray: any[] = [];
   totalAmount = 0;
@@ -20,21 +21,26 @@ export class ProductsComponent implements OnInit {
   constructor(private http: DataHandlerService) { }
 
   ngOnInit(): void {
-    // this.getList();
-    this.http.getProductsList().subscribe((res: any) => {
-      this.getProductsList = res;
-      console.log(this.getProductsList);
-      this.quantityArray = Array(this.getProductsList.length).fill(1)
-    })
+    this.getList();
+    // this.http.getProductsList().subscribe((res: any) => {
+    //   this.getProductsList = res;
+    //   console.log(this.getProductsList);
+    //   this.quantityArray = Array(this.getProductsList.length).fill(1)
+    // })
   }
 
-  // getList(){
-  //   this.http.getProductsList().subscribe(( res : any) => {
-  //     this.getProductsList = res;
-  //     console.log(this.getProductsList);
-  //     this.quantityArray = Array(this.getProductsList.length).fill(1)
-  //   })
-  // }
+  getList(){
+    this.http.getProductsList().subscribe(( res : any) => {
+      this.getProductsList = res;
+      // console.log(this.getProductsList);
+      this.quantityArray = Array(this.getProductsList.length).fill(1)
+    })
+    this.http.updateList.subscribe(( res : any) => {
+      this.updateList = res;
+      // console.log(this.getProductsList);
+      this.quantityArray = Array(this.updateList.length).fill(1)
+    });
+  }
 
   decrement(i: any) {
     if (this.quantityArray[i] > 1) {
